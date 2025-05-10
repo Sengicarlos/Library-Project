@@ -6,6 +6,7 @@
   <title>Responsive Layout with Search</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="chatbot.css">
+  <link rel="stylesheet" href="books.css">
 
 </head>
 <body>
@@ -47,8 +48,34 @@
 
   <!-- Main content -->
   <div class="main-content">
-    <h1>Welcome</h1>
-    <p>This layout now includes a top-center search bar, responsive sidebar, and profile picture.</p>
+    <div class="section">
+      <div class="bk">
+         <h3>Book Recommendation</h3>
+         <button class="view-btn" onclick="toggleBooks()" id="viewBtn">View all</button>
+      </div>
+       <div class="scroll-row" id="bookRow"></div>
+     </div>
+ 
+     <div class="section">
+       <h3>Book Category</h3>
+       <div class="scroll-row">
+         <div class="category-card">
+           <img src="https://m.media-amazon.com/images/I/91bYsX41DVL.jpg" alt="Money">
+           <p>Money/Investing</p>
+         </div>
+         <div class="category-card">
+           <img src="https://m.media-amazon.com/images/I/81Trdf9kTML.jpg" alt="Design">
+           <p>Design</p>
+         </div>
+         <div class="category-card">
+           <img src="https://m.media-amazon.com/images/I/91zbi9M+mKL.jpg" alt="Business">
+           <p>Business</p>
+         </div>
+         <div class="category-card">
+           <img src="https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg" alt="Self Improvement">
+           <p>Self Improvement</p>
+         </div>
+       </div>
   </div>
 
   <!-- Chatbot Toggle -->
@@ -65,6 +92,47 @@
     <!-- You can add input here -->
   </div>
 </div>
+
+<script>
+  const searchBtn = document.querySelector("button");
+  const input = document.querySelector("input");
+
+  searchBtn.addEventListener("click", () => {
+    alert("Searching for: " + input.value);
+  });
+
+  const books = [
+    "71g2ednj0JL", "71qZ4+DWd-L", "81gTwYAhU7L", "81wgcld4wxL",
+    "61Iz2yy2CKL", "91bYsX41DVL", "81Trdf9kTML", "71QKQ9mwV7L",
+    "51pN3eI+n7L", "61N2aGFK0jL", "91zbi9M+mKL", "81-QB7nDh4L",
+    "812uGq62HfL", "81eB+7+CkUL", "81vpsIs58WL", "51Zymoq7UnL",
+    "81AfzK5pfwL", "91bYsX41DVL", "71xLmdLOQ0L", "71UwSHSZRnS",
+    "51StJj3EqlL", "41cl07sLw-L", "713jIoMO3UL", "81j8nCE+mvL",
+    "51T-sMqSMiL", "61v+d9eU5gL", "71KilybDOoL", "817tHNcyAgL",
+    "81o+C+62cBL", "81t2CVWEsUL"
+  ];
+
+  const bookRow = document.getElementById('bookRow');
+  let showingAll = false;
+
+  function renderBooks(count) {
+    bookRow.innerHTML = "";
+    books.slice(0, count).forEach(code => {
+      const div = document.createElement('div');
+      div.className = 'book-card';
+      div.innerHTML = `<img src="https://m.media-amazon.com/images/I/${code}.jpg" alt="Book">`;
+      bookRow.appendChild(div);
+    });
+  }
+
+  function toggleBooks() {
+    showingAll = !showingAll;
+    document.getElementById('viewBtn').innerText = showingAll ? 'Show Less' : 'View all';
+    renderBooks(showingAll ? books.length : 6);
+  }
+
+  renderBooks(6);
+</script>
 
 </body>
 </html>
