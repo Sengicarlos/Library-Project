@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Project</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Layout with Search</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chatbot.css">
+
 </head>
 <body>
-    
-<script src="app.js"></script>
+  <!-- Top search bar -->
+  <div class="top-bar">
+
+
+    <form class="search-form">
+      <input type="text" placeholder="Search here..." />
+      <button type="submit">Search</button>
+    </form>
+
+     <!-- Hamburger menu trigger -->
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+      <!-- Sidebar navigation -->
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <ul class="nav-links">
+      <li>Dashboard</li>
+      <li>Profile</li>
+      <li>Settings</li>
+      <li>Logout</li>
+    </ul>
+  </div>
+
+  </div>
+
+  <!-- Profile image -->
+  <div class="profile-pic">
+    <img src="/images/20230510_130411.jpg" alt="User Profile" />
+  </div>
+
+
+
+  <!-- Overlay -->
+  <label for="menu-toggle" class="overlay"></label>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <h1>Welcome</h1>
+    <p>This layout now includes a top-center search bar, responsive sidebar, and profile picture.</p>
+  </div>
+
+  <!-- Chatbot Toggle -->
+<input type="checkbox" id="chat-toggle" hidden />
+<label for="chat-toggle" class="chat-icon">
+  💬
+</label>
+
+<!-- Chatbot Popup -->
+<div class="chat-popup">
+  <h3>ChatBot</h3>
+  <div class="chat-body">
+    <p>Hello! How can I help you?</p>
+    <!-- You can add input here -->
+  </div>
+</div>
+
 </body>
 </html>
